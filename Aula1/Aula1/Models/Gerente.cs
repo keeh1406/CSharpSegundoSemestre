@@ -9,7 +9,7 @@ namespace Aula1.Models
     public class Gerente
     {
         public long GerenteId { get; set; }
-        [Required]
+
         public string Name { get; set; }
 
         public string Endereco { get; set; }
