@@ -1,4 +1,4 @@
-﻿@model Aula1.Models.Gerente
+﻿@model Aula1.Models.Cliente
 
 @{
     Layout = null;
@@ -13,7 +13,7 @@
 </head>
 <body>
     <div>
-        <h4>Gerente</h4>
+        <h4>Cliente</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -22,6 +22,13 @@
     
             <dd>
                 @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DataNascimento)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.Endereco)
@@ -37,12 +44,26 @@
             <dd>
                 @Html.DisplayFor(model => model.Telefone)
             </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CPF)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CPF)
+            </dd>
+            dt>
+
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.GerenteId }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ClienteId }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
 </body>

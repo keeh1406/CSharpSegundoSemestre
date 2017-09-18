@@ -154,13 +154,19 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\EFContext.cs" />
+    <Compile Include="Controllers\ClientesControllercs.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
-    <Compile Include="Controllers\GerentesController.cs" />
+    <Compile Include="Controllers\LojasController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Funcionario.cs" />
-    <Compile Include="Models\Gerente.cs" />
+    <Compile Include="Models\Loja.cs" />
+    <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,15 +178,30 @@
     <Content Include="Views\Funcionarios\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\Gerentes\Index.cshtml" />
-    <Content Include="Views\Gerentes\Create.cshtml" />
-    <Content Include="Views\Gerentes\Edit.cshtml" />
-    <Content Include="Views\Gerentes\Details.cshtml" />
-    <Content Include="Views\Gerentes\Delete.cshtml" />
+    <Content Include="Views\Lojas\Index.cshtml" />
+    <Content Include="Views\Lojas\Create.cshtml" />
+    <Content Include="Views\Lojas\Edit.cshtml" />
+    <Content Include="Views\Lojas\Details.cshtml" />
+    <Content Include="Views\Lojas\Delete.cshtml" />
     <Content Include="Views\Funcionarios\Create.cshtml" />
     <Content Include="Views\Funcionarios\Edit.cshtml" />
     <Content Include="Views\Funcionarios\Details.cshtml" />
     <Content Include="Views\Funcionarios\Delete.cshtml" />
+    <Content Include="Views\Clientes\Create.cshtml" />
+    <Content Include="Views\Clientes\Delete.cshtml" />
+    <Content Include="Views\Clientes\Details.cshtml" />
+    <Content Include="Views\Clientes\Edit.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\Produtos\Create.cshtml" />
+    <Content Include="Views\Produtos\Delete.cshtml" />
+    <Content Include="Views\Produtos\Details.cshtml" />
+    <Content Include="Views\Produtos\Edit.cshtml" />
+    <Content Include="Views\Produtos\Index.cshtml" />
+    <Content Include="Views\Vendas\Create.cshtml" />
+    <Content Include="Views\Vendas\Delete.cshtml" />
+    <Content Include="Views\Vendas\Details.cshtml" />
+    <Content Include="Views\Vendas\Edit.cshtml" />
+    <Content Include="Views\Vendas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

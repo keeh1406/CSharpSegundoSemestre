@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Aula1.Models.Funcionario>
+﻿@model IEnumerable<Aula1.Models.Cliente>
 
 @{
     Layout = null;
@@ -35,12 +35,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.CPF)
             </th>
-            <th>
-            @Html.DisplayNameFor(model => model.Gerente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LojaId)
-            </th>
+          
             <th>Ações</th>
         </tr>
     
@@ -63,17 +58,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CPF)
-            </td>
+    
             <td>
-                @Html.DisplayFor(modelItem => item.Gerente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LojaId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.FuncionarioId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.FuncionarioId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.FuncionarioId })
+                @Html.ActionLink("Edit", "Edit", new { id=item.ClienteId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ClienteId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ClienteId })
             </td>
         </tr>
     }

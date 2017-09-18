@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Aula1.Models.Gerente>
+﻿@model IEnumerable<Aula1.Models.Loja>
 
 @{
     Layout = null;
@@ -30,7 +30,7 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CPF)
+                @Html.DisplayNameFor(model => model.CNPJ)
             </th>
             <th></th>
         </tr>
@@ -50,12 +50,12 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
        <td>
-                @Html.DisplayFor(modelItem => item.CPF)
+                @Html.DisplayFor(modelItem => item.CNPJ)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.GerenteId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.GerenteId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.GerenteId })
+                @Html.ActionLink("Edit", "Edit", new { id=item.LojaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LojaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LojaId })
             </td>
         </tr>
     }

@@ -1,0 +1,72 @@
+﻿@model Aula1.Models.Venda
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Venda</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DescricaoVenda)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DescricaoVenda)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.QuantidadeProduto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.QuantidadeProduto)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Valor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Valor)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DataVenda)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DataVenda)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProdutoId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProdutoId)
+            </dd>
+
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ClienteId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ClienteId)
+            </dd>
+
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.VendaId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace Aula1.Models
 {
-    public class Gerente
+    public class Cliente
     {
-        public long GerenteId { get; set; }
+        public long ClienteId { get; set; }
 
         public string Name { get; set; }
+
+        public DateTime DataNascimento { get; set; }
 
         public string Endereco { get; set; }
 
@@ -19,5 +20,6 @@ namespace Aula1.Models
         public string Email { get; set; }
 
         public long CPF { get; set; }
+
     }
 }

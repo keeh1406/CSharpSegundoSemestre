@@ -10,13 +10,13 @@ using System.Web.Mvc;
 
 namespace Aula1.Controllers
 {
-    public class GerentesController : Controller
+    public class LojasController : Controller
     {
         private readonly EFContext _context = new EFContext();
         // GET: 
         public ActionResult Index()
         {
-            return View(_context.Gerentes.OrderBy(s => s.Name));
+            return View(_context.Lojas.OrderBy(l => l.Name));
         }
 
         #region Create
@@ -26,9 +26,9 @@ namespace Aula1.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Gerente gerente)
+        public ActionResult Create(Loja lojas)
         {
-            _context.Gerentes.Add(gerente);
+            _context.Lojas.Add(loja);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -44,28 +44,28 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var gerente = _context.Gerentes.Find(id.Value);
+            var loja = _context.Lojas.Find(id.Value);
 
-            if (gerente == null)
+            if (loja == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(gerente);
+            return View(loja);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Edit(Gerente gerente)
+        public ActionResult Edit(Loja loja)
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(gerente).State = EntityState.Modified;
+                _context.Entry(loja).State = EntityState.Modified;
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(gerente); 
+            return View(loja); 
             
         }
         #endregion
@@ -79,14 +79,14 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var gerente = _context.Gerentes.Find(id.Value);
+            var loja = _context.Lojas.Find(id.Value);
 
-            if (gerente == null)
+            if (loja == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(gerente);
+            return View(loja);
         }
         #endregion
 
@@ -100,29 +100,29 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var gerente = _context.Gerentes.Find(id.Value);
+            var loja = _context.Lojas.Find(id.Value);
 
-            if (gerente == null)
+            if (loja == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(gerente);
+            return View(loja);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Delete(Gerente gerente)
+        public ActionResult Delete(Loja loja)
         {
             if (ModelState.IsValid)
             {
-                var s = _context.Gerentes.Find(gerente.GerenteId);
-                _context.Gerentes.Remove(s);
+                var l = _context.Lojas.Find(loja.LojaId);
+                _context.Lojas.Remove(l);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(gerente);
+            return View(loja); 
 
         } 
         #endregion

@@ -11,6 +11,9 @@ namespace Aula1.Context
     {
         public EFContext() : base("Asp_Net_MVC_CS") { }
         public DbSet<Funcionario> Funcionarios { get; set; }
-        public DbSet<Gerente> Gerentes { get; set; }
+        public DbSet<Loja> Lojas { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
     }
 }
