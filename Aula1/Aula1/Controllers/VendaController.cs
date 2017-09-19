@@ -16,7 +16,7 @@ namespace Aula1.Controllers
         // GET: 
         public ActionResult Index()
         {
-            return View(_context.Vendas.OrderBy(p => v.Name));
+            return View(_context.Vendas.OrderBy(v => v.DescricaoVenda));
         }
 
         #region Create

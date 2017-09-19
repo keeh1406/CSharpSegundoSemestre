@@ -26,7 +26,7 @@ namespace Aula1.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Loja lojas)
+        public ActionResult Create(Loja loja)
         {
             _context.Lojas.Add(loja);
             _context.SaveChanges();
