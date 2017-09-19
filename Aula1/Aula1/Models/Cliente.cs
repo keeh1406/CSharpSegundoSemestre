@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +12,7 @@ namespace Aula1.Models
 
         public string Name { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
 
         public string Endereco { get; set; }

@@ -14,13 +14,13 @@ namespace Aula1.Controllers
     {
 
 
-        private readonly EFContext _context = new EFContext();
+        private readonly EFContext _contexts = new EFContext();
 
         public ActionResult Index()
 
 
         {
-            return View(_context.Funcionarios.OrderBy(s => s.Name));
+            return View(_contexts.Funcionarios.OrderBy(f => f.Name));
         }
 
 
@@ -33,8 +33,8 @@ namespace Aula1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Funcionario funcionario)
         {
-            _context.Funcionarios.Add(funcionario);
-            _context.SaveChanges();
+            _contexts.Funcionarios.Add(funcionario);
+            _contexts.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -49,7 +49,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var funcionarios = _context.Funcionarios.Find(id.Value);
+            var funcionarios = _contexts.Funcionarios.Find(id.Value);
 
             if (funcionarios == null)
             {
@@ -66,8 +66,8 @@ namespace Aula1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(funcionarios).State = EntityState.Modified;
-                _context.SaveChanges();
+                _contexts.Entry(funcionarios).State = EntityState.Modified;
+                _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(funcionarios);
@@ -84,7 +84,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var funcionarios = _context.Funcionarios.Find(id.Value);
+            var funcionarios = _contexts.Funcionarios.Find(id.Value);
 
             if (funcionarios == null)
             {
@@ -105,7 +105,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var funcionarios = _context.Funcionarios.Find(id.Value);
+            var funcionarios = _contexts.Funcionarios.Find(id.Value);
 
             if (funcionarios == null)
             {
@@ -122,9 +122,9 @@ namespace Aula1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var s = _context.Funcionarios.Find(funcionario.FuncionarioId);
-                _context.Funcionarios.Remove(s);
-                _context.SaveChanges();
+                var f = _contexts.Funcionarios.Find(funcionario.FuncionarioId);
+                _contexts.Funcionarios.Remove(f);
+                _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(funcionario);

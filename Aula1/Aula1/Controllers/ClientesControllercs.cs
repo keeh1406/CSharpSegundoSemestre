@@ -14,13 +14,13 @@ namespace Aula1.Controllers
     {
 
 
-        private readonly EFContext _context = new EFContext();
+        private readonly EFContext _contexts = new EFContext();
 
         public ActionResult Index()
 
 
         {
-            return View(_context.Clientes.OrderBy(c => c.Name));
+            return View(_contexts.Clientes.OrderBy(c => c.Name));
         }
 
 
@@ -33,8 +33,8 @@ namespace Aula1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Cliente cliente)
         {
-            _context.Clientes.Add(cliente);
-            _context.SaveChanges();
+            _contexts.Clientes.Add(cliente);
+            _contexts.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -49,7 +49,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var clientes = _context.Clientes.Find(id.Value);
+            var clientes = _contexts.Clientes.Find(id.Value);
 
             if (clientes == null)
             {
@@ -66,8 +66,8 @@ namespace Aula1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(clientes).State = EntityState.Modified;
-                _context.SaveChanges();
+                _contexts.Entry(clientes).State = EntityState.Modified;
+                _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(clientes);
@@ -84,7 +84,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var clientes = _context.Clientes.Find(id.Value);
+            var clientes = _contexts.Clientes.Find(id.Value);
 
             if (clientes == null)
             {
@@ -105,7 +105,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var clientes = _context.Clientes.Find(id.Value);
+            var clientes = _contexts.Clientes.Find(id.Value);
 
             if (clientes == null)
             {
@@ -122,9 +122,9 @@ namespace Aula1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var c = _context.Clientes.Find(cliente.ClienteId);
-                _context.Clientes.Remove(c);
-                _context.SaveChanges();
+                var c = _contexts.Clientes.Find(cliente.ClienteId);
+                _contexts.Clientes.Remove(c);
+                _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(cliente);

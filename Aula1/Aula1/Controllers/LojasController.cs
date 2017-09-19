@@ -12,11 +12,11 @@ namespace Aula1.Controllers
 {
     public class LojasController : Controller
     {
-        private readonly EFContext _context = new EFContext();
+        private readonly EFContext _contexts = new EFContext();
         // GET: 
         public ActionResult Index()
         {
-            return View(_context.Lojas.OrderBy(l => l.Name));
+            return View(_contexts.Lojas.OrderBy(l => l.Name));
         }
 
         #region Create
@@ -28,8 +28,8 @@ namespace Aula1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Loja loja)
         {
-            _context.Lojas.Add(loja);
-            _context.SaveChanges();
+            _contexts.Lojas.Add(loja);
+            _contexts.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -44,7 +44,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var loja = _context.Lojas.Find(id.Value);
+            var loja = _contexts.Lojas.Find(id.Value);
 
             if (loja == null)
             {
@@ -61,8 +61,8 @@ namespace Aula1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(loja).State = EntityState.Modified;
-                _context.SaveChanges();
+                _contexts.Entry(loja).State = EntityState.Modified;
+                _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(loja); 
@@ -79,7 +79,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var loja = _context.Lojas.Find(id.Value);
+            var loja = _contexts.Lojas.Find(id.Value);
 
             if (loja == null)
             {
@@ -100,7 +100,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var loja = _context.Lojas.Find(id.Value);
+            var loja = _contexts.Lojas.Find(id.Value);
 
             if (loja == null)
             {
@@ -117,9 +117,9 @@ namespace Aula1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var l = _context.Lojas.Find(loja.LojaId);
-                _context.Lojas.Remove(l);
-                _context.SaveChanges();
+                var l = _contexts.Lojas.Find(loja.LojaId);
+                _contexts.Lojas.Remove(l);
+                _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(loja); 

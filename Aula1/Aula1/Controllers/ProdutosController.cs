@@ -1,22 +1,22 @@
 ﻿using System;
 using Aula1.Context;
 using Aula1.Models;
-using System.Data.Entity;
-using System.Net;
-using System.Web.Mvc;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Aula1.Controllers
 {
-    public class VendaController : Controller
+    public class ProdutosController : Controller
     {
-        private readonly EFContext _context = new EFContext();
+        private readonly EFContext _contexts = new EFContext();
         // GET: 
         public ActionResult Index()
         {
-            return View(_context.Vendas.OrderBy(v => v.DescricaoVenda));
+            return View(_contexts.Produtos.OrderBy(p => p.Name));
         }
 
         #region Create
@@ -26,10 +26,10 @@ namespace Aula1.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Venda venda)
+        public ActionResult Create(Produto produto)
         {
-            _context.Vendas.Add(venda);
-            _context.SaveChanges();
+            _contexts.Produtos.Add(produto);
+            _contexts.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -44,28 +44,28 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var venda = _context.Vendas.Find(id.Value);
+            var produto = _contexts.Produtos.Find(id.Value);
 
-            if (venda == null)
+            if (produto == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(venda);
+            return View(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Edit(Venda venda)
+        public ActionResult Edit(Produto produto)
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(venda).State = EntityState.Modified;
-                _context.SaveChanges();
+                _contexts.Entry(produto).State = EntityState.Modified;
+                _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(venda);
+            return View(produto);
 
         }
         #endregion
@@ -79,14 +79,14 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var venda = _context.Vendas.Find(id.Value);
+            var produto = _contexts.Produtos.Find(id.Value);
 
-            if (venda == null)
+            if (produto == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(venda);
+            return View(produto);
         }
         #endregion
 
@@ -100,33 +100,32 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var venda = _context.Produtos.Find(id.Value);
+            var produto = _contexts.Produtos.Find(id.Value);
 
-            if (venda == null)
+            if (produto == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(venda);
+            return View(produto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Delete(Venda venda)
+        public ActionResult Delete(Produto produto)
         {
             if (ModelState.IsValid)
             {
-                var v = _context.Vendas.Find(venda.VendaId);
-                _context.Vendas.Remove(v);
-                _context.SaveChanges();
+                var p = _contexts.Produtos.Find(produto.ProdutoId);
+                _contexts.Produtos.Remove(p);
+                _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(venda);
+            return View(produto);
 
         }
         #endregion
 
     }
 }
-    
