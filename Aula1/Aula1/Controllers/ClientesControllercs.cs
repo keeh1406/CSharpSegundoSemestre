@@ -125,6 +125,7 @@ namespace Aula1.Controllers
                 var c = _contexts.Clientes.Find(cliente.ClienteId);
                 _contexts.Clientes.Remove(c);
                 _contexts.SaveChanges();
+                TempData["Message"] = "Cliente " +cliente.Name.ToUpper() + " foi removido";
                 return RedirectToAction("Index");
             }
             return View(cliente);

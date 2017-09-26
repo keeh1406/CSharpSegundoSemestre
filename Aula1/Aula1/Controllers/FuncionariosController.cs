@@ -125,6 +125,7 @@ namespace Aula1.Controllers
                 var f = _contexts.Funcionarios.Find(funcionario.FuncionarioId);
                 _contexts.Funcionarios.Remove(f);
                 _contexts.SaveChanges();
+                TempData["Message"] = "Funcionario " + funcionario.Name.ToUpper() + " foi removido";
                 return RedirectToAction("Index");
             }
             return View(funcionario);

@@ -120,6 +120,7 @@ namespace Aula1.Controllers
                 var v = _contexts.Vendas.Find(venda.VendaId);
                 _contexts.Vendas.Remove(v);
                 _contexts.SaveChanges();
+                TempData["Message"] = "Venda " + venda.DescricaoVenda.ToUpper() + " foi removido";
                 return RedirectToAction("Index");
             }
             return View(venda);

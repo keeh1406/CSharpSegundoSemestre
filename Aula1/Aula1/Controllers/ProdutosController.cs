@@ -120,6 +120,7 @@ namespace Aula1.Controllers
                 var p = _contexts.Produtos.Find(produto.ProdutoId);
                 _contexts.Produtos.Remove(p);
                 _contexts.SaveChanges();
+                TempData["Message"] = "Produto " + produto.Name.ToUpper() + " foi removido";
                 return RedirectToAction("Index");
             }
             return View(produto);

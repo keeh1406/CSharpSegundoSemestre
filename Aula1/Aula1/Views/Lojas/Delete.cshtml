@@ -1,72 +1,42 @@
 ﻿@model Aula1.Models.Loja
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title =
+    "Visualizando detalhes de uma Loja";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>Lojas</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Endereco)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Endereco)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Telefone)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.CNPJ)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CNPJ)
-            </dd>
-    
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-
-            @Html.HiddenFor(model => model.LojaId)
-            @Html.HiddenFor(model => model.Name)
-
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
+@if (@TempData["Message"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Message"]
     </div>
-</body>
-</html>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Dados da loja a ser removido
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name)<br />
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user">
+                        </i>
+                    </span>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer panel-info">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Remover Loja" class="btn btn-danger" />
+                @Html.ActionLink(
+               "Retornar para a listagem",
+               "Index", null, new { @class = "btn btn-info" })
+            }
+        </div>
+    </div>
+}
