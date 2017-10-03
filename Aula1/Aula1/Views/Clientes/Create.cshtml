@@ -51,23 +51,22 @@
                                             @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer panel info">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit"
+                                           value="Adicionar Cliente"
+                                           class="btn btn-danger" />
+                                    @Html.ActionLink("Retornar para a listagem de Clientes", "Index", null, new { @class = "btn btn-warning" })
+                                </div>
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="panel-footer panel info">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit"
-                       value="Adicionar Cliente"
-                       class="btn btn-danger" />
-                @Html.ActionLink(
-                 "Retornar para a listagem de Clientes",
-                 "Index", null, new
-                 {
-                     @class =
-                 "btn btn-warning"
-                 })
-            </div>
-            <br />
-            <br />
         </div>
     </div>
 }

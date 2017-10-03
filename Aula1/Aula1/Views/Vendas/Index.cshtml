@@ -42,19 +42,19 @@
                             @Html.DisplayFor(modelItem => item.VendaId)
                         </td>
                         <th>
-                            @Html.DisplayNameFor(model => model.DescricaoVenda)
+                            @Html.DisplayFor(modelItem => item.DescricaoVenda)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.QuantidadeProduto)
+                            @Html.DisplayFor(modelItem => item.QuantidadeProduto)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.DataVenda)
+                            @Html.DisplayFor(modelItem => item.DataVenda)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ProdutoId)
+                            @Html.DisplayFor(modelItem => item.ProdutoId)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ClienteId)
+                            @Html.DisplayFor(modelItem => item.ClienteId)
                         </th>
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.VendaId })	|

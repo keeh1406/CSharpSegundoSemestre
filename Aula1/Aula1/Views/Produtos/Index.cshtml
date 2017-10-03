@@ -45,16 +45,16 @@
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <th>
-                            @Html.DisplayNameFor(model => model.DescricaoProduto)
+                            @Html.DisplayFor(modelItem => item.DescricaoProduto)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.DataValidade)
+                            @Html.DisplayFor(modelItem => item.DataValidade)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Marca)
+                            @Html.DisplayFor(modelItem => item.Marca)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.LojaId)
+                            @Html.DisplayFor(modelItem => item.LojaId)
                         </th>
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.ProdutoId })	|
