@@ -18,15 +18,18 @@ namespace Aula1.Controllers
 
         public ActionResult Index()
 
-
         {
-            return View(_contexts.Funcionarios.OrderBy(f => f.Name));
+            return View(_contexts
+                .Funcionarios
+                .Include(l => l.Lojas)
+                .OrderBy(f => f.Name));
         }
 
 
         #region Create
         public ActionResult Create()
         {
+            ViewBag.LojaId = new SelectList(_contexts.Lojas.OrderBy(n => n.Name), "LojasId", "Name");
             return View();
         }
         [HttpPost]
@@ -70,6 +73,7 @@ namespace Aula1.Controllers
                 _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.LojaId = new SelectList(_contexts.Lojas.OrderBy(n => n.Name), "LojaId", "Name");
             return View(funcionarios);
 
         }
@@ -105,14 +109,14 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var funcionarios = _contexts.Funcionarios.Find(id.Value);
+            Funcionario funcionario = _contexts.Funcionarios.Where(f => f.FuncionarioId == id).Include(l => l.Loja).First();
 
-            if (funcionarios == null)
+            if (funcionario == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(funcionarios);
+            return View(funcionario);
         }
 
         [HttpPost]

@@ -16,12 +16,13 @@ namespace Aula1.Controllers
         // GET: 
         public ActionResult Index()
         {
-            return View(_contexts.Produtos.OrderBy(p => p.Name));
+            return View(_contexts.Produtos.Include(v => v.Vendas).OrderBy(p => p.Name));
         }
 
         #region Create
         public ActionResult Create()
         {
+            ViewBag.ProdutoId = new SelectList(_contexts.Vendas.OrderBy(n => n.DescricaoVenda), "VendaId", "DescriçãoVenda");
             return View();
         }
         [HttpPost]
@@ -44,14 +45,14 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var produto = _contexts.Produtos.Find(id.Value);
+            var produtos = _contexts.Produtos.Find(id.Value);
 
-            if (produto == null)
+            if (produtos == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(produto);
+            return View(produtos);
         }
 
         [HttpPost]
@@ -79,14 +80,14 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var produto = _contexts.Produtos.Find(id.Value);
+            var produtos = _contexts.Produtos.Find(id.Value);
 
-            if (produto == null)
+            if (produtos == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(produto);
+            return View(produtos);
         }
         #endregion
 
@@ -100,7 +101,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var produto = _contexts.Produtos.Find(id.Value);
+            Produto produto = _contexts.Produtos.Where(f => f.ProdutoId == id).Include(l => l.Vendas).First();
 
             if (produto == null)
             {

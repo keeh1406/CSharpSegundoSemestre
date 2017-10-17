@@ -37,9 +37,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Gerente)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LojaId)
-                    </th>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Loja.Name)
+                    </td>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -71,9 +71,9 @@
                         <th>
                             @Html.DisplayFor(modelItem => item.Gerente)
                         </th>
-                        <th>
-                            @Html.DisplayFor(modelItem => item.LojaId)
-                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Loja.Name)
+                        </td>
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.FuncionarioId })	|
                             @Html.ActionLink("Detalhes", "Details", new { id = item.FuncionarioId })	|

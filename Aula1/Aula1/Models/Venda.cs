@@ -19,11 +19,12 @@ namespace Aula1.Models
         [DataType(DataType.Date)]
         public DateTime DataVenda { get; set; }
 
-        public int ProdutoId { get; set; }
+        public long ProdutoId { get; set; }
+        public long ClienteId { get; set; }
         public Produto Produto { get; set; }
-
-        public int ClienteId { get; set; }
         public Cliente Cliente { get; set; }
+
+        public virtual ICollection<Produto> Produtos { get; set; }
 
     }
 }

@@ -16,12 +16,13 @@ namespace Aula1.Controllers
         // GET: 
         public ActionResult Index()
         {
-            return View(_contexts.Lojas.OrderBy(l => l.Name));
+            return View(_contexts.Lojas.Include(v => v.Vendas).OrderBy(l => l.Name));
         }
 
         #region Create
         public ActionResult Create()
         {
+            ViewBag.VendaId = new SelectList(_contexts.Vendas.OrderBy(n => n.DescricaoVenda), "VendaId", "DescriçãoVenda");
             return View();
         }
         [HttpPost]
@@ -44,14 +45,14 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var loja = _contexts.Lojas.Find(id.Value);
+            var lojas = _contexts.Lojas.Find(id.Value);
 
-            if (loja == null)
+            if (lojas == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(loja);
+            return View(lojas);
         }
 
         [HttpPost]
@@ -79,14 +80,14 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var loja = _contexts.Lojas.Find(id.Value);
+            var lojas = _contexts.Lojas.Find(id.Value);
 
-            if (loja == null)
+            if (lojas == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(loja);
+            return View(lojas);
         }
         #endregion
 
@@ -100,7 +101,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var loja = _contexts.Lojas.Find(id.Value);
+            Loja loja = _contexts.Lojas.Where(f => f.LojaId == id).Include(l => l.Vendas).First();
 
             if (loja == null)
             {

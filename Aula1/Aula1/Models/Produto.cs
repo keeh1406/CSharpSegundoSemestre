@@ -19,7 +19,9 @@ namespace Aula1.Models
 
         public string Marca { get; set; }
 
-        public int LojaId { get; set; }
+        public long? LojaId { get; set; }
         public Loja Loja { get; set; }
+
+        public virtual ICollection<Venda> Vendas { get; set; }
     }
 }

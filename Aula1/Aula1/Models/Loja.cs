@@ -19,5 +19,7 @@ namespace Aula1.Models
         public string Email { get; set; }
 
         public long CNPJ { get; set; }
+
+        public virtual ICollection<Venda> Vendas { get; set; }
     }
 }
