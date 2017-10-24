@@ -24,7 +24,5 @@ namespace Aula1.Models
         public Produto Produto { get; set; }
         public Cliente Cliente { get; set; }
 
-        public virtual ICollection<Produto> Produtos { get; set; }
-
     }
 }

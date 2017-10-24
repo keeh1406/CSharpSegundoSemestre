@@ -21,5 +21,7 @@ namespace Aula1.Models
         public long CNPJ { get; set; }
 
         public virtual ICollection<Venda> Vendas { get; set; }
+
+        public virtual ICollection<Loja> Lojas { get; set; }
     }
 }

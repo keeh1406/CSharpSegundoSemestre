@@ -21,7 +21,7 @@ namespace Aula1.Controllers
         {
             return View(_contexts
                 .Funcionarios
-                .Include(l => l.Lojas)
+                .Include(l => l.Loja)
                 .OrderBy(f => f.Name));
         }
 
@@ -29,7 +29,7 @@ namespace Aula1.Controllers
         #region Create
         public ActionResult Create()
         {
-            ViewBag.LojaId = new SelectList(_contexts.Lojas.OrderBy(n => n.Name), "LojasId", "Name");
+            ViewBag.LojaId = new SelectList(_contexts.Lojas.OrderBy(n => n.Name), "LojaId", "Name");
             return View();
         }
         [HttpPost]
@@ -58,7 +58,7 @@ namespace Aula1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-
+            ViewBag.LojaId = new SelectList(_contexts.Lojas.OrderBy(n => n.Name), "LojaId", "Name");
             return View(funcionarios);
         }
 
@@ -73,7 +73,6 @@ namespace Aula1.Controllers
                 _contexts.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.LojaId = new SelectList(_contexts.Lojas.OrderBy(n => n.Name), "LojaId", "Name");
             return View(funcionarios);
 
         }

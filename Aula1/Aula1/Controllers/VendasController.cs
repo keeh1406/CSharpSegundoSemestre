@@ -16,13 +16,19 @@ namespace Aula1.Controllers
         // GET: 
         public ActionResult Index()
         {
-            return View(_contexts.Vendas.Include(p => p.Produtos).OrderBy(v => v.DescricaoVenda));
+            var list = _contexts
+                .Vendas
+                .Include(p => p.Produto)
+                .Include(p => p.Cliente)
+                .OrderBy(v => v.DescricaoVenda);
+            return View(list);
         }
 
         #region Create
         public ActionResult Create()
         {
             ViewBag.ProdutoId = new SelectList(_contexts.Produtos.OrderBy(n => n.Name), "ProdutoId", "Name");
+            ViewBag.ClienteId = new SelectList(_contexts.Clientes.OrderBy(n => n.Name), "ClienteId", "Name");
             return View();
         }
         [HttpPost]
@@ -51,7 +57,8 @@ namespace Aula1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-
+            ViewBag.ProdutoId = new SelectList(_contexts.Produtos.OrderBy(n => n.Name), "ProdutoId", "Name");
+            ViewBag.ClienteId = new SelectList(_contexts.Clientes.OrderBy(n => n.Name), "ClienteId", "Name");
             return View(vendas);
         }
 
@@ -101,7 +108,12 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Venda venda = _contexts.Vendas.Where(f => f.VendaId == id).Include(p => p.Produtos).First();
+            Venda venda = _contexts
+                .Vendas
+                .Where(f => f.VendaId == id)
+                .Include(p => p.Cliente)
+                .Include(p => p.Produto)
+                .First();
 
             if (venda == null)
             {

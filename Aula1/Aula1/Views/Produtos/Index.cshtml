@@ -29,7 +29,7 @@
                         @Html.DisplayNameFor(model => model.Marca)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Loja.Name)
+                        @Html.DisplayNameFor(model => model.Loja)
                     </th>
                     <th>Ações</th>
                 </tr>
@@ -44,18 +44,18 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-                        <th>
+                        <td>
                             @Html.DisplayFor(modelItem => item.DescricaoProduto)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.DataValidade)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Marca)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Loja.Name)
-                        </th>
+                        </td>
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.ProdutoId })	|
                             @Html.ActionLink("Detalhes", "Details", new { id = item.ProdutoId })	|

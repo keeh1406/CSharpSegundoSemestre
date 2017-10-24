@@ -23,13 +23,16 @@
                         @Html.DisplayNameFor(model => model.QuantidadeProduto)
                     </th>
                     <th>
+                        @Html.DisplayNameFor(model => model.Valor)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.DataVenda)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Produto.Name)
+                        @Html.DisplayNameFor(model => model.Produto)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Cliente.Name)
+                        @Html.DisplayNameFor(model => model.Cliente)
                     </th>
                     <th>Ações</th>
                 </tr>
@@ -41,21 +44,24 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.VendaId)
                         </td>
-                        <th>
+                        <td>
                             @Html.DisplayFor(modelItem => item.DescricaoVenda)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.QuantidadeProduto)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Valor)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.DataVenda)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Produto.Name)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Cliente.Name)
-                        </th>
+                        </td>
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.VendaId })	|
                             @Html.ActionLink("Detalhes", "Details", new { id = item.VendaId })	|

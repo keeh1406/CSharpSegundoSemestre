@@ -21,7 +21,7 @@ namespace Aula1.Models
 
         public long? LojaId { get; set; }
         public Loja Loja { get; set; }
-
+        
         public virtual ICollection<Venda> Vendas { get; set; }
     }
 }

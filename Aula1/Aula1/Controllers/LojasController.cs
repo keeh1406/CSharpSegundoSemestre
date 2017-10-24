@@ -16,13 +16,14 @@ namespace Aula1.Controllers
         // GET: 
         public ActionResult Index()
         {
-            return View(_contexts.Lojas.Include(v => v.Vendas).OrderBy(l => l.Name));
+            return View(_contexts.Lojas.Include(v => v.Vendas).Include(v => v.Lojas).OrderBy(l => l.Name));
         }
 
         #region Create
         public ActionResult Create()
         {
             ViewBag.VendaId = new SelectList(_contexts.Vendas.OrderBy(n => n.DescricaoVenda), "VendaId", "DescriçãoVenda");
+            ViewBag.LojaId = new SelectList(_contexts.Lojas.OrderBy(n => n.Name), "LojaId", "Name");
             return View();
         }
         [HttpPost]
@@ -51,7 +52,8 @@ namespace Aula1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-
+            ViewBag.VendaId = new SelectList(_contexts.Vendas.OrderBy(n => n.DescricaoVenda), "VendaId", "DescriçãoVenda");
+            ViewBag.LojaId = new SelectList(_contexts.Lojas.OrderBy(n => n.Name), "LojaId", "Name");
             return View(lojas);
         }
 
@@ -101,7 +103,7 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Loja loja = _contexts.Lojas.Where(f => f.LojaId == id).Include(l => l.Vendas).First();
+            Loja loja = _contexts.Lojas.Where(f => f.LojaId == id).Include(l => l.Vendas).Include(v => v.Lojas).First();
 
             if (loja == null)
             {

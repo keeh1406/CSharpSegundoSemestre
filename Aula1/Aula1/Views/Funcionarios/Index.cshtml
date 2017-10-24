@@ -37,9 +37,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Gerente)
                     </th>
-                    <td>
-                        @Html.DisplayNameFor(model => model.Loja.Name)
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Loja)
+                    </th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -53,24 +53,24 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
-                        <th>
+                        <td>
                             @Html.DisplayFor(modelItem => item.DataNascimento)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Endereco)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Telefone)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Email)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.CPF)
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Gerente)
-                        </th>
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Loja.Name)
                         </td>
@@ -98,6 +98,7 @@
                 $('li').removeClass("active");
                 $('#liFuncionarios').addClass("active");
                 $('.table').dataTable({ "order": [[1, "asc"]] });
+            }
         });
     </script>
 }
