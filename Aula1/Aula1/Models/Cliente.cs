@@ -13,6 +13,7 @@ namespace Aula1.Models
         public string Name { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataNascimento { get; set; }
 
         public string Endereco { get; set; }

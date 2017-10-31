@@ -65,3 +65,12 @@
         @Html.ActionLink("Retornar para a listagem", "Index", null, new { @class = "btn btn-info" })
     </div>
 </div>
+@Html.Partial("~/Views/Vendas/_PorProduto.cshtml", Model.Vendas.ToList())
+@section	ScriptPage	{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('li').removeClass("active");
+            $('#liProdutos').addClass("active");
+        });
+    </script>
+}

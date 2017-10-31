@@ -17,12 +17,12 @@ namespace Aula1.Models
         public decimal Valor { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataVenda { get; set; }
 
         public long ProdutoId { get; set; }
         public long ClienteId { get; set; }
         public Produto Produto { get; set; }
         public Cliente Cliente { get; set; }
-
     }
 }

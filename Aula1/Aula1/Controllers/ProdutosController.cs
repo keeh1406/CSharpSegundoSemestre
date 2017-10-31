@@ -83,14 +83,19 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var produtos = _contexts.Produtos.Find(id.Value);
+            var produto = _contexts
+                .Produtos
+                .Include(p => p.Vendas)
+                .Include("Vendas.Cliente")
+                .Include(l => l.Loja)
+                .First(f => f.ProdutoId == id);
 
-            if (produtos == null)
+            if (produto == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(produtos);
+            return View(produto);
         }
         #endregion
 

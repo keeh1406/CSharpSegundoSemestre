@@ -15,7 +15,8 @@ namespace Aula1.Models
         public string DescricaoProduto { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime DataValidade { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? DataValidade { get; set; }
 
         public string Marca { get; set; }
 

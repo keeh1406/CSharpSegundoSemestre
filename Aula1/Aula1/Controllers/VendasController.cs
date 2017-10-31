@@ -87,14 +87,14 @@ namespace Aula1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var vendas = _contexts.Vendas.Find(id.Value);
+            var Vendas = _contexts.Vendas.Where(f => f.VendaId == id).Include(p => p.Cliente).Include(p => p.Produto).First();
 
-            if (vendas == null)
+            if (Vendas == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
-            return View(vendas);
+            return View(Vendas);
         }
         #endregion
 
