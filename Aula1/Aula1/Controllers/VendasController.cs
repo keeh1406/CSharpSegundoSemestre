@@ -99,48 +99,44 @@ namespace Aula1.Controllers
         #endregion
 
 
-        #region Delete
-        [HttpGet]
         public ActionResult Delete(long? id)
         {
-            if (!id.HasValue)
+
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Venda venda = _contexts
-                .Vendas
-                .Where(f => f.VendaId == id)
-                .Include(p => p.Cliente)
-                .Include(p => p.Produto)
-                .First();
+            Venda venda = _contexts.Vendas.Find(id.Value);
 
             if (venda == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-
             return View(venda);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public ActionResult Delete(Venda venda)
+        public ActionResult Delete(long id)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var v = _contexts.Vendas.Find(venda.VendaId);
-                _contexts.Vendas.Remove(v);
+
+                Venda venda = _contexts.Vendas.Find(id);
+                _contexts.Vendas.Remove(venda);
                 _contexts.SaveChanges();
-                TempData["Message"] = "Venda " + venda.DescricaoVenda.ToUpper() + " foi removido";
+                TempData["Message"] = "Venda " + venda.DescricaoVenda.ToUpper() + " foi removida";
                 return RedirectToAction("Index");
             }
-            return View(venda);
+
+            catch
+            {
+
+                return View();
+            }
 
         }
-        #endregion
-
     }
 }
-    

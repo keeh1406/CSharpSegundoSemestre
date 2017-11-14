@@ -99,45 +99,44 @@ namespace Aula1.Controllers
         #endregion
 
 
-        #region Delete
-        [HttpGet]
         public ActionResult Delete(long? id)
         {
-            if (!id.HasValue)
+
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Funcionario funcionario = _contexts.Funcionarios.Where(f => f.FuncionarioId == id).Include(l => l.Loja).First();
+            Funcionario funcionario = _contexts.Funcionarios.Find(id.Value);
 
             if (funcionario == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-
             return View(funcionario);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public ActionResult Delete(Funcionario funcionario)
+        public ActionResult Delete(long id)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var f = _contexts.Funcionarios.Find(funcionario.FuncionarioId);
-                _contexts.Funcionarios.Remove(f);
+
+                Funcionario funcionario = _contexts.Funcionarios.Find(id);
+                _contexts.Funcionarios.Remove(funcionario);
                 _contexts.SaveChanges();
-                TempData["Message"] = "Funcionario " + funcionario.Name.ToUpper() + " foi removido";
+                TempData["Message"] = "Ideia " + funcionario.Name.ToUpper() + " foi removida";
                 return RedirectToAction("Index");
             }
-            return View(funcionario);
+
+            catch
+            {
+
+                return View();
+            }
 
         }
-        #endregion
-
-
     }
-
 }
-
